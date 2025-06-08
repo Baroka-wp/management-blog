@@ -1,0 +1,75 @@
+---
+export interface Props {
+  title: string;
+  pubDate: string;
+  author?: string;
+  description?: string;
+}
+
+const { title, pubDate, author, description } = Astro.props;
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="description" content={description || ''} />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #faf8f5;
+        font-family: 'Noto Serif JP', serif;
+        color: #1e1e1e;
+        line-height: 1.8;
+        max-width: 700px;
+        margin: auto;
+        padding: 3rem 1rem;
+      }
+      h1, h2, h3 {
+        margin-top: 2rem;
+        font-weight: normal;
+        color: #4b6e91;
+      }
+      blockquote {
+        margin: 2rem 0;
+        padding-left: 1rem;
+        border-left: 4px solid #b44e52;
+        color: #5e4b56;
+        font-style: italic;
+        background: #fdfaf6;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 1rem;
+        overflow-x: auto;
+        border-left: 3px solid #aaa;
+      }
+      code {
+        background: #eee;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+      }
+      hr {
+        margin: 2rem 0;
+        border: none;
+        border-top: 1px dashed #bbb;
+      }
+      .meta {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <h1>{title}</h1>
+      <p class="meta">
+        {author ? `Par ${author} — ` : ''}{pubDate}
+      </p>
+      <slot />
+    </article>
+  </body>
+</html>

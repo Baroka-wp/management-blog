@@ -1,11 +1,100 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import ArticleCard from '../components/ArticleCard.astro'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const articles = await getCollection('articles')
+const derniersArticles = articles.slice(0, 3)
+
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Dojo du Management">
+  <main class="accueil">
+
+    <section class="citation">
+      <blockquote>
+        <p>« Gérer, c’est savoir écouter le silence entre deux actions. »</p>
+        <cite>— Sagesse Zen du Manager</cite>
+      </blockquote>
+    </section>
+
+    <section class="edito">
+      <h2>📜 Lettre du Sensei du Management</h2>
+      <p>
+        Bienvenue dans notre dojo numérique. Chaque mois, je vous livre une pensée sur l’art de diriger avec clarté et sérénité.
+      </p>
+      <p>
+        <em>“En chaque moment de tension sommeille un apprentissage.”</em>
+      </p>
+    </section>
+
+    <section class="articles">
+      <h2>🗞️ Derniers articles</h2>
+      {derniersArticles.map(({ data, slug }) => (
+        <ArticleCard
+          title={data.title}
+          description={data.description}
+          pubDate={data.pubDate}
+          href={`/articles/${slug}/`}
+        />
+      ))}
+    </section>
+
+  </main>
+
+  <style>
+    .accueil {
+      max-width: 700px;
+      margin: auto;
+      padding: 3rem 1rem;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .citation blockquote {
+      font-style: italic;
+      font-size: 1.2rem;
+      padding: 1rem;
+      margin: 2rem 0;
+      border-left: 3px solid var(--accent);
+      color: var(--ink);
+    }
+
+    .edito {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 2rem;
+      border: 1px solid #ddd;
+      margin-bottom: 3rem;
+    }
+
+    .articles ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .articles li {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed #ccc;
+    }
+
+    .articles a {
+      text-decoration: none;
+      color: var(--text);
+      transition: color 0.3s;
+    }
+
+    .articles a:hover {
+      color: var(--accent);
+    }
+
+    h2 {
+      margin-top: 3rem;
+      font-size: 1.6rem;
+    }
+
+    small {
+      color: #888;
+      font-size: 0.85rem;
+    }
+  </style>
 </Layout>
