@@ -8,24 +8,12 @@ const derniersArticles = articles.slice(0, 3)
 
 ---
 
-<Layout title="Dojo du Management">
+<Layout title="Du Management">
   <main class="accueil">
-
-    <section class="citation">
-      <blockquote>
-        <p>« Gérer, c’est savoir écouter le silence entre deux actions. »</p>
-        <cite>— Sagesse Zen du Manager</cite>
-      </blockquote>
-    </section>
-
-    <section class="edito">
-      <h2>📜 Lettre du Sensei du Management</h2>
-      <p>
-        Bienvenue dans notre dojo numérique. Chaque mois, je vous livre une pensée sur l’art de diriger avec clarté et sérénité.
-      </p>
-      <p>
-        <em>“En chaque moment de tension sommeille un apprentissage.”</em>
-      </p>
+    <section class="hero">
+      <h1>Du Management</h1>
+      <p>Des idées simples pour diriger avec clarté et humanité.</p>
+      <p><a href="/articles/" class="cta">Voir tous les articles</a></p>
     </section>
 
     <section class="articles">
@@ -50,32 +38,29 @@ const derniersArticles = articles.slice(0, 3)
       font-family: 'Noto Serif JP', serif;
     }
 
-    .citation blockquote {
-      font-style: italic;
-      font-size: 1.2rem;
-      padding: 1rem;
-      margin: 2rem 0;
-      border-left: 3px solid var(--accent);
-      color: var(--ink);
-    }
-
-    .edito {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 2rem;
-      border: 1px solid #ddd;
+    .hero {
+      text-align: center;
       margin-bottom: 3rem;
     }
-
-    .articles ul {
-      list-style: none;
-      padding: 0;
+    .hero h1 {
+      font-size: 2.2rem;
+      margin: 0;
+      color: var(--indigo);
+      font-family: 'Sawarabi Mincho', serif;
+    }
+    .hero .cta {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--indigo);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .hero .cta:hover {
+      background: var(--accent);
     }
 
-    .articles li {
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px dashed #ccc;
-    }
 
     .articles a {
       text-decoration: none;
