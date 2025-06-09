@@ -2,8 +2,9 @@
 export interface Props {
   title?: string;
 }
-const { title = 'Dojo du Management' } = Astro.props;
+const { title = 'Du Management' } = Astro.props;
 import NavHeader from '../components/NavHeader.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
@@ -20,6 +21,8 @@ import NavHeader from '../components/NavHeader.astro';
   <body>
     <NavHeader />
     <slot />
+    <Footer />
+
   </body>
 </html>
 
