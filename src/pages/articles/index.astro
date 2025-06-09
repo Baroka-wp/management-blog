@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import ArticleCard from '../../components/ArticleCard.astro'
+
+const articles = await getCollection('articles')
+---
+
+<Layout title="Articles">
+  <main class="liste-articles">
+    <h1>Tous les articles</h1>
+    {articles.map(({ data, slug }) => (
+      <ArticleCard
+        title={data.title}
+        description={data.description}
+        pubDate={data.pubDate}
+        href={`/articles/${slug}/`}
+      />
+    ))}
+  </main>
+
+  <style>
+    .liste-articles {
+      max-width: 700px;
+      margin: auto;
+      padding: 3rem 1rem;
+      font-family: 'Noto Serif JP', serif;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--indigo);
+    }
+  </style>
+</Layout>

@@ -10,6 +10,11 @@ const derniersArticles = articles.slice(0, 3)
 
 <Layout title="Dojo du Management">
   <main class="accueil">
+    <section class="hero">
+      <h1>Dojo du Management</h1>
+      <p>Explorez l'art de diriger avec clarté et sérénité.</p>
+      <p><a href="/articles/" class="cta">Voir tous les articles</a></p>
+    </section>
 
     <section class="citation">
       <blockquote>
@@ -48,6 +53,29 @@ const derniersArticles = articles.slice(0, 3)
       margin: auto;
       padding: 3rem 1rem;
       font-family: 'Noto Serif JP', serif;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin: 0;
+      color: var(--indigo);
+      font-family: 'Sawarabi Mincho', serif;
+    }
+    .hero .cta {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--indigo);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .hero .cta:hover {
+      background: var(--accent);
     }
 
     .citation blockquote {
