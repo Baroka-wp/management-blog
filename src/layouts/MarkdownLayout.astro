@@ -27,6 +27,12 @@ import Footer from '../components/Footer.astro';
         font-family: 'Noto Serif JP', serif;
         color: #1e1e1e;
         line-height: 1.8;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main.article-container {
+        flex: 1;
         max-width: 700px;
         margin: auto;
         padding: 3rem 1rem;
@@ -69,13 +75,15 @@ import Footer from '../components/Footer.astro';
   </head>
   <body>
     <NavHeader />
-    <article>
-      <h1>{title}</h1>
-      <p class="meta">
-        {author ? `Par ${author} — ` : ''}{pubDate}
-      </p>
-      <slot />
-    </article>
+    <main class="article-container">
+      <article>
+        <h1>{title}</h1>
+        <p class="meta">
+          {author ? `Par ${author} — ` : ''}{pubDate}
+        </p>
+        <slot />
+      </article>
+    </main>
     <Footer />
   </body>
 </html>
