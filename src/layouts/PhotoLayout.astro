@@ -1,0 +1,46 @@
+---
+import Layout from './Layout.astro';
+
+export interface Props {
+  title: string;
+  pubDate: string;
+  image: string;
+}
+
+const { title, pubDate, image } = Astro.props;
+---
+<Layout {title}>
+  <main class="photo-detail">
+    <article>
+      <h1>{title}</h1>
+      <p class="pub-date"><small>{pubDate}</small></p>
+      <img src={image} alt={title} />
+      <div class="content">
+        <slot />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .photo-detail {
+    max-width: 900px;
+    margin: auto;
+    padding: 3rem 1rem;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .pub-date {
+    color: #888;
+  }
+
+  .content {
+    margin-top: 2rem;
+  }
+</style>

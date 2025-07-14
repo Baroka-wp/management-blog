@@ -9,6 +9,15 @@ const articles = defineCollection({
   })
 });
 
+const photos = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.string(),
+    image: z.string()
+  })
+});
+
 export const collections = {
-  articles
+  articles,
+  photos
 };

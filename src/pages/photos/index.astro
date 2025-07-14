@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import PhotoCard from '../../components/PhotoCard.astro';
+
+const photos = await getCollection('photos');
+---
+
+<Layout title="Photos">
+  <main class="photos">
+    <h1>Photos</h1>
+    <div class="gallery">
+      {photos.map(({ data, slug }) => (
+        <PhotoCard
+          title={data.title}
+          image={data.image}
+          href={`/photos/${slug}/`}
+        />
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .photos {
+    max-width: 1200px;
+    margin: auto;
+    padding: 3rem 1rem;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+</style>
